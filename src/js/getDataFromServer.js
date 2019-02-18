@@ -7,7 +7,10 @@ export default function getDataFromServer(url, callback) {
             if (ajaxReq.status !== 200) {
                 console.log(new Error(`${ajaxReq.status}:${ajaxReq.statusText}`));
             } else {
-                callback(JSON.parse(ajaxReq.responseText));
+                callback(JSON.parse(ajaxReq.responseText, (key, value) => {
+                    if (key === 'createdAt') return new Date(value);
+                    return value;
+                }));
             }
         };
         ajaxReq.send();
