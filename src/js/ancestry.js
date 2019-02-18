@@ -5,9 +5,10 @@
     getDataFromServer('https://tanuhaua.github.io/datas-file-json/data.json', createCards);
 
     function createCards(arr) {
+        let contForTask = document.querySelector('.js-task2');
         let averages = [averageAgeDifference(arr), averageAge(arr, 'm'), averageAge(arr, 'f')];
         let headlineForStatistics = ['Average age difference between mothers and their children', 'Average age of men', 'Average age of women'];
-        createHeadlineAndStatistic(averages, headlineForStatistics, 'Ancestry of one dude');
+        createHeadlineAndStatistic(averages, headlineForStatistics, 'Ancestry of one dude', contForTask);
         let container = document.createElement('div');
         container.className = 'container';
         for (let i = 0; i < arr.length; i++) {
@@ -41,10 +42,10 @@
             }
             container.insertAdjacentElement('beforeend', div);
         }
-        document.body.appendChild(container);
+        contForTask.appendChild(container);
     }
 
-    function createHeadlineAndStatistic(firstArr, secondArr, headline) {
+    function createHeadlineAndStatistic(firstArr, secondArr, headline, container) {
         let h1 = document.createElement('h1');
         let statContainer = document.createElement('div');
         h1.className = 'headline';
@@ -63,8 +64,8 @@
             div.appendChild(p);
             statContainer.appendChild(div);
         }
-        document.body.insertBefore(statContainer, document.body.firstChild);
-        document.body.insertBefore(h1, statContainer);
+        container.insertBefore(statContainer, container.firstChild);
+        container.insertBefore(h1, statContainer);
     }
 
     function averageAgeDifference(arr) {

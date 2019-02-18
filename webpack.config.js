@@ -56,11 +56,17 @@ module.exports = {
     devServer: {
         publicPath: '/dist',
         overlay: true,
+        // publicPath: './dist',
+        // contentBase: path.resolve(__dirname, './dist'),
+        // watchContentBase: true,
+        // overlay: true,
+        // hot: true
+
     },
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'style/[name].css',
-            publicPath: './dist/css'
+            publicPath: './dist/style'
         }),
         new HtmlWebPackPlugin({
             template: "./src/index.html",

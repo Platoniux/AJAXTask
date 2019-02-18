@@ -1,0 +1,17 @@
+.go-to-task {
+  margin: auto;
+  padding: 20px;
+  border: 2px solid $text-color-all-page;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: $text-color-all-page;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: aliceblue;
+    background-color: $text-color-all-page;
+  }
+}

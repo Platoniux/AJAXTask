@@ -13,4 +13,7 @@ body {
   background-color: $background-color-all-page;
   color: $text-color-all-page;
   font-family: Raleway, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
 }

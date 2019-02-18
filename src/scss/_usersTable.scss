@@ -1,0 +1,22 @@
+.users-table {
+  margin-top: 30px;
+  text-transform: uppercase;
+  border: 2px solid $text-color-all-page;
+  border-collapse: collapse;
+
+  &__descr {
+    font-weight: bold;
+    color: aliceblue;
+    background-color: $text-color-all-page;
+
+    td {
+      border: 2px solid $text-color-all-page;
+    }
+  }
+
+  td {
+    border: 1px solid $text-color-all-page;
+    padding: 10px;
+  }
+
+}
