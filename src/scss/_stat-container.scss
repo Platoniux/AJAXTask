@@ -1,0 +1,22 @@
+.stat-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+
+  &__inner-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 210px;
+  }
+
+  &__stat-headline {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__result {
+    text-align: center;
+    font-size: 30px;
+  }
+}
