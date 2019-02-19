@@ -4,7 +4,6 @@
   border-collapse: collapse;
 
   &__descr {
-    background-color: $text-color-all-page;
 
     button {
       width: 100%;
@@ -17,6 +16,12 @@
       font-size: 25px;
       color: aliceblue;
       cursor: pointer;
+      background-color: $text-color-all-page;
+
+      &:active {
+        background-color: transparent;
+        color: $text-color-all-page;
+      }
     }
   }
 
