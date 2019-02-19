@@ -57,7 +57,7 @@ module.exports = {
         publicPath: '/dist',
         overlay: true,
         // publicPath: './dist',
-        // contentBase: path.resolve(__dirname, './dist'),
+        // contentBase: path.resolve(__dirname, '/dist'),
         // watchContentBase: true,
         // overlay: true,
         // hot: true
