@@ -1,17 +1,15 @@
 ;'use strict';
 import getDataFromServer from './getDataFromServer';
 
-const table = document.querySelector('.js-table');
 const tableBody = document.querySelector('.js-table-body');
-const dateButton = document.querySelector('.js-reg-date-sort');
-const idButton = document.querySelector('.js-id-sort');
-
 getDataFromServer('https://tanuhaua.github.io/datas-file-json/visitors.json ', fillTheTable(tableBody));
-dateButton.addEventListener('click', () => {
-   dateSorting(tableBody, 1);
-});
-idButton.addEventListener('click', () => {
-    idSorting(tableBody, 0);
+
+const sortingButtons = document.querySelectorAll('.js-table-th');
+
+[].forEach.call(sortingButtons, (item, i) => {
+   item.addEventListener('click', () => {
+       sortTable(tableBody, i);
+   })
 });
 
 function fillTheTable(container) {
@@ -38,31 +36,52 @@ function fillTheTable(container) {
     }
 }
 
-function dateSorting(bodyOfTable, n) {
-    let cellWithData = getNecessaryTd(bodyOfTable, n);
-    cellWithData.reverse();
-    repaint(bodyOfTable, cellWithData);
+function sortTable(bodyOfTable, n) {
+    let switching = true;
+    let dir = 'asc';
+    let switchcount = 0;
+    let x, y, rows, shouldSwitch, i, dateX, dateY;
+
+    while (switching) {
+        switching = false;
+        rows = bodyOfTable.rows;
+        for (i = 0; i < (rows.length - 1); i++) {
+           shouldSwitch = false;
+           x = rows[i].getElementsByTagName('TD')[n];
+           y = rows[i + 1].getElementsByTagName('TD')[n];
+           dateX = x.innerHTML;
+           dateY = y.innerHTML;
+           dateX = new Date(+dateX.slice(6), (dateX.slice(3,5) - 1), +dateX.slice(0,2));
+           dateY = new Date(+dateY.slice(6), (dateY.slice(3,5) - 1), +dateY.slice(0,2));
+
+           if (dir === 'asc') {
+               if (n === 1 && x > y) {
+                   shouldSwitch = true;
+                   break;
+               } else if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                   shouldSwitch = true;
+                   break;
+               }
+           } else if (dir === 'desc') {
+               if (n === 1 && x < y) {
+                   shouldSwitch = true;
+                   break;
+               } else if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                   shouldSwitch = true;
+                   break;
+               }
+           }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            ++switchcount;
+        } else {
+            if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
 }
 
-function idSorting(bodyTable, n) {
-    let cellWithData = getNecessaryTd(bodyTable, n);
-    cellWithData.sort((a, b) => {
-        return b[0].innerHTML - a[0].innerHTML;
-    });
-    repaint(bodyTable, cellWithData);
-}
-
-function repaint(tablesBody, arr) {
-    tablesBody.innerHTML = '';
-    arr.forEach(item => {
-       tablesBody.appendChild(item[0].parentElement);
-    });
-}
-
-function getNecessaryTd(boxOfTable, n) {
-    return [].map.call(boxOfTable.rows, row => {
-        return [].filter.call(row.cells, (cell, i) => {
-            if (i === n) return cell;
-        });
-    });
-}
