@@ -2,9 +2,9 @@
 import getDataFromServer from './getDataFromServer';
 
 const tableBody = document.querySelector('.js-table-body');
-getDataFromServer('https://tanuhaua.github.io/datas-file-json/visitors.json ', fillTheTable(tableBody));
-
 const sortingButtons = document.querySelectorAll('.js-table-th');
+
+getDataFromServer('https://tanuhaua.github.io/datas-file-json/visitors.json ', fillTheTable(tableBody));
 
 [].forEach.call(sortingButtons, (item, i) => {
    item.addEventListener('click', () => {
@@ -15,13 +15,13 @@ const sortingButtons = document.querySelectorAll('.js-table-th');
 function fillTheTable(container) {
     return function(data) {
         data.sort((a, b) => {
-           let dateA = new Date(a['createdAt']);
-           let dateB = new Date(b['createdAt']);
-           if (dateA > dateB) {
-               return 1;
-           } else if (dateA < dateB) {
-               return -1;
-           }
+            let idA = a['id'];
+            let idB = b['id'];
+            if (idA > idB) {
+                return 1;
+            } else if (idA < idB) {
+                return -1;
+            }
         });
         data.forEach((item) => {
             let row = document.createElement('tr');

@@ -1,4 +1,4 @@
-.go-to-task {
+.ajax-btns {
   margin: auto;
   padding: 20px;
   border: 2px solid $text-color-all-page;
@@ -10,8 +10,18 @@
   cursor: pointer;
   transition: all 0.3s;
 
+  &--inner {
+    margin: 50px auto 50px;
+  }
+
   &:hover {
     color: aliceblue;
     background-color: $text-color-all-page;
+  }
+
+  &:disabled {
+    background: darkcyan;
+    color: aliceblue;
+    border: 2px solid aliceblue;
   }
 }

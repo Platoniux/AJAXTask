@@ -35,9 +35,13 @@ function changeNumber(el, digit, arr) {
 
 function getNumberOfTask(arr) {
   let number = 0;
-  [].forEach.call(arr, (item, i) => {
+  [].forEach.call(arr, (item, i, arr) => {
       if (!(item.classList.contains('js-display-none'))) {
-          number = (i + 3);
+          if (i === (arr.length - 1)) {
+              number = i;
+          } else {
+              number = (i + 3);
+          }
       }
   });
   return number;

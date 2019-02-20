@@ -8,27 +8,27 @@
     <title>This is AJAX, baby!</title>
 </head>
 <body>
-    <button class="go-to-task js-go-to-task" type="button">
+    <button class="ajax-btns js-go-to-task" type="button">
         go to task #<span class="js-number-of-task"></span>
     </button>
-    <div class="js-task js-task2 js-display-none"></div>
-    <div class="js-task js-task3">
+    <div class="js-task js-task2 js-display-none""></div>
+    <div class="js-task js-task3 js-display-none"">
         <table class="users-table js-table">
             <thead>
                 <tr class="users-table__descr js-table-descr">
-                    <th class="js-id-sort js-table-th">
+                    <th class="js-table-th">
                             id
                     </th>
-                    <th class="js-reg-date-sort js-table-th" >
+                    <th class="js-table-th" >
                             registration date
                     </th>
-                    <th class="js-id-name js-table-th">
+                    <th class="js-table-th">
                             name
                     </th>
-                    <th class="js-id-email js-table-th">
+                    <th class="js-table-th">
                             email
                     </th>
-                    <th class="js-id-description js-table-th">
+                    <th class="js-table-th">
                             description
                     </th>
                 </tr>
@@ -38,6 +38,37 @@
             </tbody>
         </table>
     </div>
-    <div class="js-task js-task4 js-display-none"></div>
+    <div class="js-task js-task4">
+        <table class="users-table">
+            <thead>
+                <tr class="users-table__descr">
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        registration date
+                    </th>
+                    <th>
+                        name
+                    </th>
+                    <th>
+                        email
+                    </th>
+                    <th>
+                        description
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="users-table__body js-body-table">
+
+            </tbody>
+        </table>
+        <button class="ajax-btns ajax-btns--inner js-load-more"
+                type="button"
+                name="load more"
+                value="load more">
+            load more
+        </button>
+    </div>
 </body>
 </html>
