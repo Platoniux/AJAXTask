@@ -55,18 +55,12 @@ function sortTable(bodyOfTable, n) {
            dateY = new Date(+dateY.slice(6), (dateY.slice(3,5) - 1), +dateY.slice(0,2));
 
            if (dir === 'asc') {
-               if (n === 1 && x > y) {
-                   shouldSwitch = true;
-                   break;
-               } else if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+               if ((n === 1 && dateX > dateY) || (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())) {
                    shouldSwitch = true;
                    break;
                }
            } else if (dir === 'desc') {
-               if (n === 1 && x < y) {
-                   shouldSwitch = true;
-                   break;
-               } else if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+               if ((n === 1 && dateX < dateY) || (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase())) {
                    shouldSwitch = true;
                    break;
                }
